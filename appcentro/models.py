@@ -35,7 +35,7 @@ class Nomenclador(models.Model):
 		return retorno.format(self.NombreDeArea, self.NombreDePerfil)
 
 class Alumnos(models.Model):
-	Documento = models.IntegerField(validators = [MaxValueValidator(999999999)], primary_key = True)
+	Documento = models.IntegerField(validators = [MaxValueValidator(99999999)], primary_key = True)
 	ApellidoyNombre = models.CharField(max_length = 30)
 	Direccion = models.CharField(max_length = 30)
 	Localidad = models.CharField(max_length = 25)
@@ -90,12 +90,13 @@ class Modulos(models.Model):
 			return self.Nombre
 
 class AlumnosPorModulos(models.Model):
+	IDAlumPorMod = models.CharField(max_length = 10, primary_key = True)
 	Documento = models.ForeignKey(Alumnos, on_delete = models.CASCADE)
 	IDModulo = models.ForeignKey(Modulos, on_delete = models.CASCADE)
 	IDCurso = models.ForeignKey(Cursos, related_name = 'appcentro.Cursos.IDCurso+', on_delete = models.CASCADE)
 	CFP = models.ForeignKey(Cursos, related_name = 'appcentro.Cursos.CFP+', on_delete = models.CASCADE)
 	Nota = models.IntegerField(validators = [MaxValueValidator(999)])
-	Vencimiento = models.DateTimeField()
+	Vencimiento = models.DateField()
 
 	class Meta:
 			verbose_name_plural = 'Alumnos por Modulos'

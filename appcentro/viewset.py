@@ -1,27 +1,27 @@
 from rest_framework import viewsets
-from .serializer import NacSerializer, NomencSerializer, AlumnoSerializer, CursoSerializer, ModuloSerializer, AlumPorModSerializer
-from .models import Nacionalidad, Nomenclador, Alumnos, Cursos, Modulos, AlumnosPorModulos
+from .serializer import AlumnoSerializer, CursoSerializer, NacionalidadSerializer, NomencladorSerializer, ModulosSerializer, AlumModuloSerial
+from .models import Alumnos, Cursos, Nomenclador, Modulos, AlumnosPorModulos, Nacionalidad
 
-class NacViews(viewsets.ModelViewSet):
-    queryset = Nacionalidad.objects.all()
-    serializer_class = NacSerializer
-
-class NomencViews(viewsets.ModelViewSet):
-    queryset = Nomenclador.objects.all()
-    serializer_class = NomencSerializer
-
-class AlumnoViews(viewsets.ModelViewSet):
+class AlumnoViewSet (viewsets.ModelViewSet):
     queryset = Alumnos.objects.all()
     serializer_class = AlumnoSerializer
 
-class CursoViews(viewsets.ModelViewSet):
+class CursosViewSet(viewsets.ModelViewSet):
     queryset = Cursos.objects.all()
     serializer_class = CursoSerializer
 
-class ModuloViews(viewsets.ModelViewSet):
-    queryset = Modulos.objects.all()
-    serializer_class = ModuloSerializer
+class NacionViewSet(viewsets.ModelViewSet):
+    queryset = Nacionalidad.objects.all()
+    serializer_class = NacionalidadSerializer
 
-class AlumPorModViews(viewsets.ModelViewSet):
+class NomenViewSet(viewsets.ModelViewSet):
+    queryset = Nomenclador.objects.all()
+    serializer_class = NomencladorSerializer
+
+class ModuloViewSet(viewsets.ModelViewSet):
+    queryset = Modulos.objects.all()
+    serializer_class = ModulosSerializer
+
+class AlumPorModViewSet(viewsets.ModelViewSet):
     queryset = AlumnosPorModulos.objects.all()
-    serializer_class = AlumPorModSerializer
+    serializer_class = AlumModuloSerial
